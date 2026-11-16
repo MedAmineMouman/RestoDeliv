@@ -37,6 +37,7 @@ const DISH_IMAGE_BY_KEY: Array<[RegExp, string]> = [
   selector: 'app-menu',
   standalone: true,
   imports: [CommonModule],
+  styleUrl: './menu.scss',
   template: `
     <div class="page-wrap menu-page">
       <div class="container">
@@ -71,8 +72,8 @@ const DISH_IMAGE_BY_KEY: Array<[RegExp, string]> = [
           </div>
 
           <div class="row g-4">
-            <div class="col-md-6 col-lg-4" *ngFor="let dish of dishes()">
-              <article class="card dish-card">
+            <div class="col-md-6 col-lg-4" *ngFor="let dish of dishes(); let i = index">
+              <article class="card dish-card" [style.animation-delay]="i * 75 + 'ms'">
                 <div class="dish-image">
                   <img [src]="getDishImage(dish)"
                        [alt]="dish.nom"
